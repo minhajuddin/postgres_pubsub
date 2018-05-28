@@ -1,18 +1,11 @@
 defmodule PG do
-  @moduledoc """
-  Documentation for PG.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> PG.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def start do
+    {:ok, pid} =
+      Postgrex.Notifications.start_link(
+        hostname: "localhost",
+        username: "postgres",
+        password: "postgres",
+        database: "test"
+      )
   end
 end
